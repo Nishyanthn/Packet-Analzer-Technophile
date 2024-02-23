@@ -1,0 +1,340 @@
+/* Fixed header and footer.
+	* --------------------------------------- */
+    html, body{
+        background-image: linear-gradient(
+      0deg,
+      hsl(0deg 0% 0%) 0%,
+      hsl(344deg 0% 2%) 25%,
+      hsl(344deg 0% 5%) 50%,
+      hsl(344deg 0% 7%) 75%,
+      hsl(0deg 0% 8%) 100%
+    );
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    
+    
+    #header{
+        position:fixed;
+        height: 0px;
+        display:block;
+        width: 100%;
+        z-index:9;
+        text-align:center;
+        padding: 0px 0 0 0;
+        font-family: 'Quicksand', sans-serif;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    #header{
+        top:0px;
+    }
+    
+    /*
+    #footer{
+        bottom:0px;
+    }
+    */
+    /*navbar-dark bg-dark*/
+    
+    .navbar-custom {
+        background-color: rgb(14, 14, 14);
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        
+    }
+    
+    .s1{
+        background: url("assets/img/bg2.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    #logo {
+        width: 70%;
+    }
+    
+    .inlineshow{
+        display: inline;
+    }
+    
+    .s2 h1{
+        text-align: right;
+        margin: 4rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .s4 h1{
+        text-align: right;
+        margin: 2rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .s5 h1{
+        text-align: right;
+        margin: 1rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    
+    .s3 h1{
+        text-align: right;
+        margin: 6rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .ss1 h1{
+        text-align: right;
+        margin: 6rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .ss2 h1{
+        text-align: right;
+        margin: 3rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    .ss3 h1{
+        text-align: right;
+        margin: 3rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .ss4 h1{
+        text-align: right;
+        margin: 0rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .ss5 h1{
+        text-align: right;
+        margin: 3rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .ss6 h1{
+        text-align: right;
+        margin: 3rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .ss7 h1{
+        text-align: right;
+        margin: 3rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    .ss8 h1{
+        text-align: right;
+        margin: 0rem 2rem 0rem 0rem;
+        font-size: 7rem;
+    }
+    
+    
+    .content-custom{
+        padding-top: 6rem;
+    }
+    
+    .content-custom2{
+        visibility: hidden;
+    }
+    
+    .uppercase-custom{
+        text-transform: uppercase;
+    }
+    
+    h2{
+        font-style: italic;
+    }
+    
+    #active-memeber{
+        border: white;
+        border-style: solid;
+        border-width: medium;
+        width: 102%;
+    }
+    
+    .dokumentacia{
+        margin-bottom: 10px;
+    }
+    
+    
+    /*
+    .s1 h1{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+    
+    */
+    
+    .seven-cols{
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    .member-custom{
+        width: 4rem;
+        padding: 60px 0px 60px 0px;
+        margin: 10px;
+        text-transform: uppercase;
+        text-align: center;
+        /*background-color: grey;*/
+    }
+    
+    .img-custom {
+        width: 100%;
+        margin-bottom: 10px;
+        max-height: 16rem;
+        /*margin-top: 100px;*/
+    }
+    
+    .ss1{
+        background: url("assets/img/team.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    
+    
+    
+    .icons i {
+        color: #b5b3b3;
+        border: 1px solid #b5b3b3;
+        padding: 6px;
+        margin-left: 4px;
+        border-radius: 5px;
+        cursor: pointer
+    }
+    
+    /*
+    .activity-done {
+        font-style: italic;
+    }
+    
+    .activity-desc{
+        font-weight: bolder;
+    }
+    */
+    
+    .list-group li {
+        margin-bottom: 12px;
+        
+    }
+    
+    .list-group-item {
+        color: rgb(255, 255, 255);
+    }
+    
+    .list li {
+        list-style: none;
+        padding: 3px;
+        /*border: 1px solid #e3dada;*/
+        margin-top: 5px;
+        border-radius: 5px;
+        /*
+        background-image: linear-gradient(
+      0deg,
+      hsl(0deg 0% 8%) 0%,
+      hsl(344deg 0% 10%) 14%,
+      hsl(344deg 0% 11%) 29%,
+      hsl(344deg 0% 13%) 43%,
+      hsl(344deg 0% 15%) 57%,
+      hsl(344deg 0% 16%) 71%,
+      hsl(344deg 0% 18%) 86%,
+      hsl(0deg 0% 20%) 100%
+    );*/
+    
+    
+    background-image: linear-gradient(
+      0deg,
+      hsl(0deg 0% 8%) 0%,
+      hsl(344deg 0% 9%) 25%,
+      hsl(344deg 0% 10%) 50%,
+      hsl(344deg 0% 11%) 75%,
+      hsl(0deg 0% 12%) 100%
+    );
+        }
+    
+    
+    
+    .date-time {
+        font-size: 12px
+    }
+    
+    .profile-image img {
+        margin-left: 3px
+    }
+    
+    .iframe-container {    
+        padding-bottom: 100%;
+        padding-top: 30px; height: 0; overflow: hidden;
+    }
+     
+    .iframe-container iframe,
+    .iframe-container object,
+    .iframe-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .iconclicable{
+        cursor: pointer;
+    }
+    
+    /*
+    .s4 h6 {
+        font-size: smaller;
+        
+    }
+    
+    .s5 h6 {
+        font-size: smaller;
+        
+    }
+    */
+    .datepadding{
+        min-width: 500px;
+    }
+    
+    .pdf{
+        background-color: rgb(116, 19, 19);
+        border-radius: 2px;
+        border: solid;
+        border-color: rgb(116, 19, 19);
+        margin-left: 40px;
+        padding-left: 1px;
+        padding-right: 1px;
+        
+    }
+    .pdf2{
+        background-color: rgb(116, 19, 19);
+        border-radius: 2px;
+        border: solid;
+        border-color: rgb(116, 19, 19);
+        margin-left: 49px;
+        padding-left: 1px;
+        padding-right: 1px;
+        
+    }
+    .pdf3{
+        background-color: rgb(116, 19, 19);
+        border-radius: 2px;
+        border: solid;
+        border-color: rgb(116, 19, 19);
+        margin-left: 58px;
+        padding-left: 1px;
+        padding-right: 1px;
+        
+    }
+    
+    .itemcontent{
+        font-style: italic;
+        margin-left: 90px;
+    }
