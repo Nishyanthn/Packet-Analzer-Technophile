@@ -1,9 +1,21 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, filedialog
+from scapy.all import *
 
-# Create a function to handle button clicks
+file_path = ""
+
+# Function to handle button clicks
 def button_click(text):
-    print(f"{text} button clicked")
+    global file_path
+    if text == "Open the File":
+        open_file()
+    elif text == "Analyse the Packets":
+        if file_path:
+            plaintext_passwords(file_path)
+        else:
+            print("Please open a file first.")
+    else:
+        print(f"{text} button clicked")
 
 # Function to handle selection from vulnerability dropdown
 def vulnerability_selected(event):
@@ -12,6 +24,43 @@ def vulnerability_selected(event):
 # Function to handle selection from statistic dropdown
 def statistic_selected(event):
     selected_statistic.set(statistic_options[statistic_dropdown.current()])
+
+def open_file():
+    global file_path
+    file_path = tk.filedialog.askopenfilename(filetypes=[("PCAP files", "*.pcap"), ("Text files", "*.txt")])
+    if file_path:
+        with open(file_path, 'r', encoding='latin-1') as file:
+            file_content = file.read()
+        output_text.delete('1.0', tk.END)  # Clear previous content
+        output_text.insert(tk.END, file_content)  # Insert content into output text area
+
+def plaintext_passwords(file_path):
+    packets = rdpcap(file_path)
+    found_auth = False
+    auth_payload = ""
+
+    for packet in packets:
+        if packet.haslayer(TCP) and packet[TCP].dport == 25:
+            # Check if the packet is SMTP traffic (destination port 25)
+            payload = packet[TCP].payload
+            if isinstance(payload, Raw):
+                # Check if the payload is Raw (contains actual data)
+                payload_data = payload.load.decode('utf-8', errors='ignore')
+                
+                if found_auth:
+                    if "DATA" in payload_data:
+                        # If "DATA" command is found, break the loop
+                        break
+                    else:
+                        # Otherwise, append payload data
+                        auth_payload += payload_data
+
+                if "AUTH LOGIN" in payload_data:
+                    # If "AUTH LOGIN" command is found, start collecting payload data
+                    found_auth = True
+                    auth_payload += payload_data
+    vulnerability_output.delete('1.0', tk.END)  # Clear previous content
+    vulnerability_output.insert(tk.END, auth_payload)  # Insert content into vulnerability output area
 
 # Create the main window
 root = tk.Tk()
@@ -118,4 +167,3 @@ root.rowconfigure(3, weight=1)
 root.rowconfigure(4, weight=1000)
 
 root.mainloop()
-
