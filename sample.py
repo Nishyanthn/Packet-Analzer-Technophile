@@ -1,19 +1,27 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
-from scapy.all import *
+from scapy.all import sniff
+import threading
 
 file_path = ""
+capture_packets = False  # Change to False initially
 
 # Function to handle button clicks
 def button_click(text):
-    global file_path
+    global file_path, capture_packets
     if text == "Open the File":
         open_file()
     elif text == "Analyse the Packets":
         if file_path:
-            plaintext_passwords(file_path)
+            plaintext_passwords()
         else:
             print("Please open a file first.")
+    elif text == "Start Capture":
+        if not capture_packets:
+            capture_packets = True
+            start_capture_button.config(state="disabled")  # Disable button while capturing
+            capture_thread = threading.Thread(target=capture)
+            capture_thread.start()
     else:
         print(f"{text} button clicked")
 
@@ -62,6 +70,16 @@ def plaintext_passwords(file_path):
     vulnerability_output.delete('1.0', tk.END)  # Clear previous content
     vulnerability_output.insert(tk.END, auth_payload)  # Insert content into vulnerability output area
 
+# Packet capturing function
+def capture():
+    global capture_packets
+    while capture_packets:
+        sniff(prn=packet_callback, count=1)
+
+# Callback function to process captured packets
+def packet_callback(packet):
+    output_text.insert(tk.END, packet.summary() + "\n")  # Insert captured packet summary into output text
+
 # Create the main window
 root = tk.Tk()
 root.title("Packet Capture and Analyzing Tool")
@@ -89,6 +107,8 @@ button_texts = ["Start Capture", "Save Into File", "Open the File", "Analyse the
 for i, text in enumerate(button_texts):
     button = tk.Button(button_frame, text=text, command=lambda t=text: button_click(t), highlightbackground="#3d79e1")  # Set button border color
     button.grid(row=0, column=i, padx=5, pady=5, sticky=tk.W)
+    if text == "Start Capture":
+        start_capture_button = button  # Store reference to the start capture button
 
 # Create a frame to contain the output text
 output_frame = tk.Frame(root, bd=2, relief=tk.SOLID, bg="#4887b7", highlightbackground="#4887b7")
